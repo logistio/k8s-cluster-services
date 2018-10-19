@@ -2,7 +2,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'jenkins-insights-data-py'
+      label 'jenkins-k8s-cluster-svc'
       yamlFile 'jenkinsPodTemplate.yml'
     }
   }
@@ -25,7 +25,7 @@ pipeline {
       }
       steps {
         container('gcloud-helm'){
-          sh "helm repo add opensource-helm ${config.helm.repository}"
+          sh "helm repo add ${config.helm.repository-name} ${config.helm.repository-url}"
           sh "helm push ${config.helm.helm-folder}/ ${config.helm.repository-name}"
         }//container gcloud-helm
       }//steps
