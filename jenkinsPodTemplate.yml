@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: jenkins-insights-data-py
+  name: k8s-cluster-services
 spec:
   containers:
   - name: gcloud-helm
