@@ -25,6 +25,7 @@ pipeline {
       }
       steps {
         container('gcloud-helm'){
+          sh "helm init --client-only"
           sh "helm repo add ${config.helm.repositoryName} ${config.helm.repositoryUrl}"
           sh "helm push ${config.helm.helmFolder}/ ${config.helm.repositoryName}"
         }//container gcloud-helm
