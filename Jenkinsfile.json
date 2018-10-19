@@ -4,5 +4,5 @@
         "repository-name": "opensource-helm",
         "helm-folder": "cluster-svc"
     },
-    "buildBranch": "develop | new-deploy"
+    "buildBranch": "master"
 }
