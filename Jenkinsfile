@@ -25,8 +25,8 @@ pipeline {
       }
       steps {
         container('gcloud-helm'){
-          sh "helm repo add ${config.helm.repository-name} ${config.helm.repository-url}"
-          sh "helm push ${config.helm.helm-folder}/ ${config.helm.repository-name}"
+          sh "helm repo add ${config.helm.repositoryName} ${config.helm.repositoryUrl}"
+          sh "helm push ${config.helm.helmFolder}/ ${config.helm.repositoryName}"
         }//container gcloud-helm
       }//steps
     }//stage 
