@@ -1,8 +1,10 @@
 {
-    "helm": {
-        "repositoryUrl": "https://opensource-helm.squareroute.io/",
-        "repositoryName": "opensource-helm",
-        "helmFolder": "cluster-svc"
-    },
-    "buildBranch": "master"
+    "helm":{
+        "opensourceRepo": {
+          "repoName": "opensource-helm",
+          "repo": "https://opensource-helm.squareroute.io"
+        },
+        "clusterSvcFolder": "cluster-svc",
+        "jenkinsFolder": "jenkins"
+    }
 }

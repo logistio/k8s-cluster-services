@@ -2,7 +2,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'jenkins-k8s-cluster-svc'
+      label 'jenkins-open-source-helm'
       yamlFile 'jenkinsPodTemplate.yml'
     }
   }
@@ -19,14 +19,14 @@ pipeline {
         } // container('jnlp')
       } // steps
     } // stage
-    stage('Initialise Helm Jenkins Squareroute'){
-      when {
-          expression { config.buildBranch.contains(env.BRANCH_NAME) }
-      }
+    stage('Initialise Helm Jenkins'){
       steps {
         container('gcloud-helm'){
-          sh "helm repo add ${config.helm.repositoryName} ${config.helm.repositoryUrl}"
-          sh "helm push ${config.helm.helmFolder}/ ${config.helm.repositoryName}"
+          sh "helm repo add ${config.helm.opensourceRepo.repoName} ${config.helm.opensourceRepo.repo}"
+          //push cluster svc
+          sh "helm push ${config.helm.clusterSvcFolder}/ ${config.helm.opensourceRepo.repoName}"
+          //push jenkins
+          sh "helm push ${config.helm.jenkinsFolder}/ ${config.helm.opensourceRepo.repoName}"
         }//container gcloud-helm
       }//steps
     }//stage 
